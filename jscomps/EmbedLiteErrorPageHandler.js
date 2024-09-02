@@ -159,7 +159,7 @@ var ErrorPageEventHandler = {
             }
             let temporary = (target == temp) ||
                              PrivateBrowsingUtils.isWindowPrivate(errorDoc.defaultView);
-            overrideService.rememberValidityOverride(uri.asciiHost, uri.port, cert, flags,
+            overrideService.rememberValidityOverride(uri.asciiHost, uri.port, {}, cert, flags,
                                                      temporary);
             errorDoc.location.reload();
           } else if (target == errorDoc.getElementById("getMeOutOfHereButton")) {
