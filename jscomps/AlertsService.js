@@ -13,6 +13,7 @@ XPCOMUtils.defineLazyServiceGetter(Services, "embedlite",
 
 Services.scriptloader.loadSubScript("chrome://embedlite/content/Logger.js");
 
+
 // -----------------------------------------------------------------------
 // Alerts Service
 // -----------------------------------------------------------------------
@@ -30,7 +31,11 @@ AlertsService.prototype = {
   },
 
   showAlert: function(aAlert, aAlertListener) {
-    dump("showAlert:" + aAlert + "\n")
+    dump("showAlert(title:" + aAlert.title + " text:" + aAlert.text + "\n")
+    var window = Services.embedlite.getAnyEmbedWindow()
+    var winId = Services.embedlite.getIDByWindow(window)
+    dump("winId:" + winId + "\n")
+    Services.embedlite.sendAsyncMessage(winId, "embed:prompt", JSON.stringify({ notification: { title: aAlert.title, text: aAlert.text }}))
   },
 
   showAlertNotification: function(aImageUrl, aTitle, aText, aTextClickable, aCookie, aAlertListener, aName, aDir, aLang, aData, aPrincipal, aInPrivateBrowsing, aRequireInteraction) {

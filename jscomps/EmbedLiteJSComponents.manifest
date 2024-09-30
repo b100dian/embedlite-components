@@ -5,7 +5,8 @@ category app-startup $EmbedLiteConsoleListener service,@mozilla.org/embedlite-co
 
 # AlertsService.js
 component {b98ab6b8-6c88-11e2-99bc-6745f7369235} AlertsService.js
-contract @mozilla.org/alert-notification;1 {b98ab6b8-6c88-11e2-99bc-6745f7369235}
+category app-startup AlertsService service,@mozilla.org/alerts-service;1
+contract @mozilla.org/alerts-service;1 {b98ab6b8-6c88-11e2-99bc-6745f7369235}
 
 # AboutRedirector.js
 component {59f3da9a-6c88-11e2-b875-33d1bd379849} AboutRedirector.js
